@@ -13,6 +13,9 @@
 		0488BBC92A7E3CBB00484208 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488BBC82A7E3CBB00484208 /* Preview Assets.xcassets */; };
 		0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBD12A7E476100484208 /* KeypadButton.swift */; };
 		0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBD52A7E4BBA00484208 /* CalcModule.swift */; };
+		0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBDA2A7E5B2C00484208 /* CoreView.swift */; };
+		0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBDC2A7E5B4000484208 /* CoreViewModel.swift */; };
+		0488BBE02A7E603200484208 /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBDF2A7E603200484208 /* KeypadButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		0488BBCF2A7E472600484208 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0488BBD12A7E476100484208 /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 		0488BBD52A7E4BBA00484208 /* CalcModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcModule.swift; sourceTree = "<group>"; };
+		0488BBDA2A7E5B2C00484208 /* CoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreView.swift; sourceTree = "<group>"; };
+		0488BBDC2A7E5B4000484208 /* CoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreViewModel.swift; sourceTree = "<group>"; };
+		0488BBDF2A7E603200484208 /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +65,9 @@
 			children = (
 				0488BBC12A7E3CBA00484208 /* CalculatorCloneApp.swift */,
 				0488BBC32A7E3CBA00484208 /* ContentView.swift */,
+				0488BBDE2A7E602100484208 /* Components */,
 				0488BBD42A7E4BA700484208 /* Utilities */,
+				0488BBD72A7E5B0700484208 /* Core */,
 				0488BBD02A7E475500484208 /* Models */,
 				0488BBC52A7E3CBB00484208 /* Assets.xcassets */,
 				0488BBC72A7E3CBB00484208 /* Preview Content */,
@@ -89,6 +97,39 @@
 				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0488BBD72A7E5B0700484208 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBD92A7E5B1600484208 /* ViewModels */,
+				0488BBD82A7E5B1000484208 /* Views */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0488BBD82A7E5B1000484208 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBDA2A7E5B2C00484208 /* CoreView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0488BBD92A7E5B1600484208 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBDC2A7E5B4000484208 /* CoreViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0488BBDE2A7E602100484208 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBDF2A7E603200484208 /* KeypadButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,8 +202,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0488BBE02A7E603200484208 /* KeypadButton.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
+				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
 				0488BBC42A7E3CBA00484208 /* ContentView.swift in Sources */,
+				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
 				0488BBC22A7E3CBA00484208 /* CalculatorCloneApp.swift in Sources */,
 				0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */,
 			);

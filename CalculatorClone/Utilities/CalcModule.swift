@@ -29,7 +29,6 @@ struct CalcModule {
     private var isClearPressed: Bool = false
     private var zeroCount: Int = 0
     private var containsDecimal: Bool {
-        guard let displayText = displayText else { return false }
         return displayText.contains(".")
     }
     
@@ -64,7 +63,7 @@ struct CalcModule {
         return newNumber
     }
     
-    var displayText: String? {
+    var displayText: String {
         // 작성 중인 값(newNumber), 1주소 피연산자(ArithmeticExpression.firstOperand), 계산결과값(result) 중
         // 사인 상태에 맞는 값을 문자열로 변환해둠
         return convertNumberToString(for: number, withCommas: true)
