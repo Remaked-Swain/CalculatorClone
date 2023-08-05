@@ -11,6 +11,8 @@
 		0488BBC42A7E3CBA00484208 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBC32A7E3CBA00484208 /* ContentView.swift */; };
 		0488BBC62A7E3CBB00484208 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488BBC52A7E3CBB00484208 /* Assets.xcassets */; };
 		0488BBC92A7E3CBB00484208 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488BBC82A7E3CBB00484208 /* Preview Assets.xcassets */; };
+		0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBD12A7E476100484208 /* KeypadButton.swift */; };
+		0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBD52A7E4BBA00484208 /* CalcModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		0488BBC52A7E3CBB00484208 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0488BBC82A7E3CBB00484208 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0488BBCF2A7E472600484208 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0488BBD12A7E476100484208 /* KeypadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButton.swift; sourceTree = "<group>"; };
+		0488BBD52A7E4BBA00484208 /* CalcModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			children = (
 				0488BBC12A7E3CBA00484208 /* CalculatorCloneApp.swift */,
 				0488BBC32A7E3CBA00484208 /* ContentView.swift */,
+				0488BBD42A7E4BA700484208 /* Utilities */,
+				0488BBD02A7E475500484208 /* Models */,
 				0488BBC52A7E3CBB00484208 /* Assets.xcassets */,
 				0488BBC72A7E3CBB00484208 /* Preview Content */,
 			);
@@ -67,6 +73,22 @@
 				0488BBC82A7E3CBB00484208 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0488BBD02A7E475500484208 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBD12A7E476100484208 /* KeypadButton.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0488BBD42A7E4BA700484208 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +161,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
 				0488BBC42A7E3CBA00484208 /* ContentView.swift in Sources */,
 				0488BBC22A7E3CBA00484208 /* CalculatorCloneApp.swift in Sources */,
+				0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
