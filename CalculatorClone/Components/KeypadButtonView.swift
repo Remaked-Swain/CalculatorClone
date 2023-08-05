@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KeypadButton: View {
+struct KeypadButtonView: View {
     @EnvironmentObject private var coreVM: CoreViewModel
     
     let buttonType: ButtonType
@@ -60,7 +60,7 @@ struct KeypadButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.headline)
+            .font(.largeTitle)
             .fontWeight(.medium)
             .frame(width: size, height: size)
             .frame(maxWidth: isWide ? .infinity : size, alignment: isWide ? .leading : .center)
