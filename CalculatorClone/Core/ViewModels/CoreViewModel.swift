@@ -44,4 +44,8 @@ final class CoreViewModel: ObservableObject {
         guard case .order(let order) = buttonType else { return false }
         return module.orderButtonIsHighlighted(order)
     }
+    
+    func dragDisplayTextToRemove() {
+        module.dragDisplayTextToRemove()
+    }
 }

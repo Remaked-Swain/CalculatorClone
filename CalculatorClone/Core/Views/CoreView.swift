@@ -12,14 +12,10 @@ struct CoreView: View {
     
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            Color.theme.backgroundColor.ignoresSafeArea()
             
             VStack {
-                VStack {
-                    Spacer()
-                    displayText
-                }
-                .frame(height: UIScreen.main.bounds.height / 3)
+                displayText
                 
                 keypads
             }
@@ -36,13 +32,30 @@ struct CoreView_Previews: PreviewProvider {
 // MARK: Extracted Views
 extension CoreView {
     private var displayText: some View {
-        Text(coreVM.displayText)
-            .padding()
-            .font(.system(size: 88, weight: .light))
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .lineLimit(1)
-            .minimumScaleFactor(0.2)
+        VStack {
+            Spacer()
+            Text(coreVM.displayText)
+                .padding()
+                .font(.system(size: 88, weight: .light))
+                .foregroundColor(.theme.textColor)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
+        }
+        .background(
+            Rectangle().foregroundColor(.theme.backgroundColor)
+                .frame(maxWidth: .infinity)
+                .frame(height: UIScreen.main.bounds.height / 3)
+                .gesture(
+                    DragGesture()
+                        .onChanged({ _ in
+                            // do nothing
+                        })
+                        .onEnded({ _ in
+                            coreVM.dragDisplayTextToRemove()
+                        })
+                )
+        )
     }
     
     private var keypads: some View {

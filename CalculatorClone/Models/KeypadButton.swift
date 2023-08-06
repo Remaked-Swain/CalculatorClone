@@ -59,16 +59,16 @@ import SwiftUI
     
     var foregroundColor: Color {
         switch self {
-        case .negative, .percent, .allClear, .clear: return .black
-        default: return .white
+        case .negative, .percent, .allClear, .clear: return .theme.backgroundColor
+        default: return .theme.textColor
         }
     }
     
     var backgroundColor: Color {
         switch self {
-        case .digit, .decimal: return .secondary
-        case .order, .equal: return .orange
-        case .negative, .percent, .allClear, .clear: return Color(.lightGray)
+        case .digit, .decimal: return .theme.darkSecondaryColor
+        case .order, .equal: return .theme.accentColor
+        case .negative, .percent, .allClear, .clear: return .theme.secondaryColor
         }
     }
 }
