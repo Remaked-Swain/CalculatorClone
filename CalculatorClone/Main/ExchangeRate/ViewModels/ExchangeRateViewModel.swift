@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class ExchangeRateViewModel: ObservableObject {
+    @Published var baseCurrency: CurrencyCode = .KRW
+    @Published var textField: String = ""
+    @Published var comparisonCurrency: CurrencyCode = .USD
+}

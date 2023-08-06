@@ -22,6 +22,7 @@
 		0488BBEE2A7FA4C200484208 /* MenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBED2A7FA4C200484208 /* MenuType.swift */; };
 		0488BBF02A7FA81900484208 /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBEF2A7FA81900484208 /* ExchangeRateView.swift */; };
 		0488BBF42A7FA83300484208 /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF32A7FA83300484208 /* ExchangeRateViewModel.swift */; };
+		0488BBF62A7FC60D00484208 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF52A7FC60D00484208 /* CurrencyCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0488BBED2A7FA4C200484208 /* MenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuType.swift; sourceTree = "<group>"; };
 		0488BBEF2A7FA81900484208 /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
 		0488BBF32A7FA83300484208 /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
+		0488BBF52A7FC60D00484208 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				0488BBED2A7FA4C200484208 /* MenuType.swift */,
 				0488BBD12A7E476100484208 /* KeypadButton.swift */,
 				0488BBE42A7FA1AF00484208 /* ExchangeRateModel.swift */,
+				0488BBF52A7FC60D00484208 /* CurrencyCode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				0488BBE32A7F795F00484208 /* Color.swift in Sources */,
 				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
 				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
+				0488BBF62A7FC60D00484208 /* CurrencyCode.swift in Sources */,
 				0488BBC22A7E3CBA00484208 /* CalculatorCloneApp.swift in Sources */,
 				0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */,
 			);
