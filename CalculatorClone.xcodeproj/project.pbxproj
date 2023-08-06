@@ -16,6 +16,8 @@
 		0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBDC2A7E5B4000484208 /* CoreViewModel.swift */; };
 		0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBDF2A7E603200484208 /* KeypadButtonView.swift */; };
 		0488BBE32A7F795F00484208 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBE22A7F795F00484208 /* Color.swift */; };
+		0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBE42A7FA1AF00484208 /* ExchangeRateModel.swift */; };
+		0488BBE72A7FA2FA00484208 /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0488BBE62A7FA2FA00484208 /* ApiKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		0488BBDC2A7E5B4000484208 /* CoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreViewModel.swift; sourceTree = "<group>"; };
 		0488BBDF2A7E603200484208 /* KeypadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadButtonView.swift; sourceTree = "<group>"; };
 		0488BBE22A7F795F00484208 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0488BBE42A7FA1AF00484208 /* ExchangeRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateModel.swift; sourceTree = "<group>"; };
+		0488BBE62A7FA2FA00484208 /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 		0488BBC02A7E3CBA00484208 /* CalculatorClone */ = {
 			isa = PBXGroup;
 			children = (
+				0488BBE62A7FA2FA00484208 /* ApiKey.plist */,
 				0488BBC12A7E3CBA00484208 /* CalculatorCloneApp.swift */,
 				0488BBDE2A7E602100484208 /* Components */,
 				0488BBD42A7E4BA700484208 /* Utilities */,
@@ -87,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				0488BBD12A7E476100484208 /* KeypadButton.swift */,
+				0488BBE42A7FA1AF00484208 /* ExchangeRateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0488BBE72A7FA2FA00484208 /* ApiKey.plist in Resources */,
 				0488BBC92A7E3CBB00484208 /* Preview Assets.xcassets in Resources */,
 				0488BBC62A7E3CBB00484208 /* Assets.xcassets in Resources */,
 			);
@@ -212,6 +219,7 @@
 			files = (
 				0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
+				0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */,
 				0488BBE32A7F795F00484208 /* Color.swift in Sources */,
 				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
 				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
