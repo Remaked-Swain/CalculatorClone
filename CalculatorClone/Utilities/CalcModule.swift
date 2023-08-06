@@ -28,9 +28,7 @@ struct CalcModule {
     private var isDecimal: Bool = false
     private var isClearPressed: Bool = false
     private var zeroCount: Int = 0
-    private var containsDecimal: Bool {
-        return displayText.contains(".")
-    }
+    private var containsDecimal: Bool { return displayText.contains(".") }
     
     // 작성 중인 값을 나타내는 변수로, didSet을 이용해 변화를 감지하는데 그냥 작성되고 있을 경우에는 상태도 초기화
     private var newNumber: Decimal? {
