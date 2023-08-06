@@ -19,6 +19,10 @@ class ExchangeRateModule {
         loadData()
     }
     
+    private func checkFileManager() {
+        
+    }
+    
     func loadData(base: CurrencyCode.RawValue = "KRW") {
         guard let apiKey = Bundle.getAPIKey(for: openKey) else { return }
         
