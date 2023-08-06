@@ -23,6 +23,9 @@
 		0488BBF02A7FA81900484208 /* ExchangeRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBEF2A7FA81900484208 /* ExchangeRateView.swift */; };
 		0488BBF42A7FA83300484208 /* ExchangeRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF32A7FA83300484208 /* ExchangeRateViewModel.swift */; };
 		0488BBF62A7FC60D00484208 /* CurrencyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF52A7FC60D00484208 /* CurrencyCode.swift */; };
+		0488BBF82A7FCD2200484208 /* ExchangeRateModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */; };
+		0488BBFA2A7FCE3F00484208 /* Bundle+APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF92A7FCE3F00484208 /* Bundle+APIKey.swift */; };
+		0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		0488BBEF2A7FA81900484208 /* ExchangeRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateView.swift; sourceTree = "<group>"; };
 		0488BBF32A7FA83300484208 /* ExchangeRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateViewModel.swift; sourceTree = "<group>"; };
 		0488BBF52A7FC60D00484208 /* CurrencyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCode.swift; sourceTree = "<group>"; };
+		0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateModule.swift; sourceTree = "<group>"; };
+		0488BBF92A7FCE3F00484208 /* Bundle+APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+APIKey.swift"; sourceTree = "<group>"; };
+		0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
+				0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */,
+				0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0488BBE22A7F795F00484208 /* Color.swift */,
+				0488BBF92A7FCE3F00484208 /* Bundle+APIKey.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,11 +278,14 @@
 				0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */,
 				0488BBEC2A7FA3F500484208 /* MainView.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
+				0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */,
 				0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */,
 				0488BBF02A7FA81900484208 /* ExchangeRateView.swift in Sources */,
 				0488BBE32A7F795F00484208 /* Color.swift in Sources */,
 				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
+				0488BBFA2A7FCE3F00484208 /* Bundle+APIKey.swift in Sources */,
 				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
+				0488BBF82A7FCD2200484208 /* ExchangeRateModule.swift in Sources */,
 				0488BBF62A7FC60D00484208 /* CurrencyCode.swift in Sources */,
 				0488BBC22A7E3CBA00484208 /* CalculatorCloneApp.swift in Sources */,
 				0488BBD22A7E476100484208 /* KeypadButton.swift in Sources */,
