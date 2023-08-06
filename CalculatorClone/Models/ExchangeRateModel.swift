@@ -189,3 +189,24 @@ import Foundation
   }
  }
  */
+
+struct ExchangeRateModel: Codable {
+    let result: String?
+    let documentation, termsOfUse: String?
+    let timeLastUpdateUnix: Int?
+    let timeLastUpdateUTC: String?
+    let timeNextUpdateUnix: Int?
+    let timeNextUpdateUTC, baseCode: String?
+    let conversionRates: [String: Double]?
+
+    enum CodingKeys: String, CodingKey {
+        case result, documentation
+        case termsOfUse
+        case timeLastUpdateUnix
+        case timeLastUpdateUTC
+        case timeNextUpdateUnix
+        case timeNextUpdateUTC
+        case baseCode
+        case conversionRates
+    }
+}
