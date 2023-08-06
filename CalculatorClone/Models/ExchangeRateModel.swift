@@ -191,13 +191,14 @@ import Foundation
  */
 
 struct ExchangeRateModel: Codable {
-    let result: String?
-    let documentation, termsOfUse: String?
-    let timeLastUpdateUnix: Int?
-    let timeLastUpdateUTC: String?
-    let timeNextUpdateUnix: Int?
-    let timeNextUpdateUTC, baseCode: String?
+    let result: String? // 응답결과: success, fail
+    let documentation, termsOfUse: String? // API documentation, terms
+    let timeLastUpdateUnix: Int? // 최근 업데이트 시각, UNIX timestamp
+    let timeLastUpdateUTC: String? // 최근 업데이트 시각, UTC
+    let timeNextUpdateUnix: Int? // 다음 업데이트 예정 시각, UNIX timestamp
+    let timeNextUpdateUTC: String? // 다음 업데이트 예정 시각, UTC
     let conversionRates: [String: Double]?
+    let baseCode: String? // 기준 통화
 
     enum CodingKeys: String, CodingKey {
         case result, documentation
