@@ -21,28 +21,9 @@ struct ExchangeRateView: View {
                 
                 comparisonCurrencySection
                 
-                VStack {
-                    Spacer()
-                    ForEach(rateVM.keypads, id: \.self) { row in
-                        HStack {
-                            Spacer()
-                            ForEach(row, id: \.self) { buttonType in
-                                NumberKeypadButton(buttonType, size: getButtonSize())
-                                    .environmentObject(rateVM)
-                            }
-                            Spacer()
-                        }
-                    }
-                    Spacer()
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
+                // Reset Buttons
             }
         }
-    }
-    
-    private func getButtonSize() -> CGFloat {
-        return (UIScreen.main.bounds.width - 5 * 12) / 4
     }
 }
 
@@ -66,7 +47,8 @@ extension ExchangeRateView {
             
             Spacer()
             
-            Text(rateVM.baseCurrencyAmount, format: .number)
+            TextField("0", value: $rateVM.baseCurrencyAmount, format: .number)
+                .keyboardType(.decimalPad)
                 .font(.system(size: 80))
                 .foregroundColor(.theme.textColor)
                 .lineLimit(1)
