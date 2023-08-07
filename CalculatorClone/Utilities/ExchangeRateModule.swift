@@ -60,6 +60,7 @@ class ExchangeRateModule {
                 receiveValue: { [weak self] receivedExchangeRateModel in
                     self?.exchangeRateModel = receivedExchangeRateModel
                     self?.subscription?.cancel()
+                    print("ExchangeRateModel 다운로드 됨")
                 })
     }
 }

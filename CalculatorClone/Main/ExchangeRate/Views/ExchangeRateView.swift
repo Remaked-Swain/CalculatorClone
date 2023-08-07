@@ -17,9 +17,7 @@ struct ExchangeRateView: View {
             VStack {
                 baseCurrencySection
                 
-                Image(systemName: "chevron.down")
-                    .imageScale(.large)
-                    .foregroundColor(.theme.accentColor)
+                swapCurrencyButton
                 
                 comparisonCurrencySection
                 
@@ -35,6 +33,7 @@ struct ExchangeRateView_Previews: PreviewProvider {
     }
 }
 
+// MARK: Extract Views
 extension ExchangeRateView {
     private var baseCurrencySection: some View {
         VStack(alignment:. leading) {
@@ -46,8 +45,14 @@ extension ExchangeRateView {
                 Spacer()
             }
             
-            TextField("기준 통화량", text: $rateVM.textField)
-                .tint(.theme.accentColor)
+            Spacer()
+            
+            TextField("0", value: $rateVM.baseCurrencyAmount, format: .number)
+                .keyboardType(.decimalPad)
+                .font(.system(size: 80))
+                .foregroundColor(.theme.textColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -69,7 +74,13 @@ extension ExchangeRateView {
                 Spacer()
             }
             
-            Text("fdafdafdafdafdaf")
+            Spacer()
+            
+            Text(rateVM.convertedCurrencyAmount, format: .number)
+                .font(.system(size: 80))
+                .foregroundColor(.theme.textColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.2)
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -80,4 +91,20 @@ extension ExchangeRateView {
         )
         .padding()
     }
+    
+    private var swapCurrencyButton: some View {
+        Button {
+            // swap currency
+        } label: {
+            Image(systemName: "chevron.down")
+                .imageScale(.large)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.theme.accentColor)
+        }
+    }
+}
+
+// MARK: Methods
+extension ExchangeRateView {
+    
 }
