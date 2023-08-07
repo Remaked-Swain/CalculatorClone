@@ -15,13 +15,15 @@ struct ExchangeRateView: View {
             Color.theme.backgroundColor.ignoresSafeArea()
             
             VStack {
+                Spacer()
+                
                 baseCurrencySection
                 
                 swapCurrencyButton
                 
                 comparisonCurrencySection
                 
-                // Reset Buttons
+                keypads
             }
         }
     }
@@ -40,14 +42,12 @@ extension ExchangeRateView {
             HStack {
                 Text(rateVM.baseCurrency.description)
                     .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.textColor)
+                    .foregroundColor(.theme.accentColor)
                 
                 Spacer()
             }
             
-            Spacer()
-            
-            TextField("0", value: $rateVM.baseCurrencyAmount, format: .number)
+            Text(rateVM.baseCurrencyAmount, format: .number)
                 .keyboardType(.decimalPad)
                 .font(.system(size: 80))
                 .foregroundColor(.theme.textColor)
@@ -56,7 +56,6 @@ extension ExchangeRateView {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .frame(height: UIScreen.main.bounds.height / 5)
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .foregroundColor(.theme.darkSecondaryColor)
@@ -69,12 +68,10 @@ extension ExchangeRateView {
             HStack {
                 Text(rateVM.comparisonCurrency.description)
                     .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.textColor)
+                    .foregroundColor(.theme.accentColor)
                 
                 Spacer()
             }
-            
-            Spacer()
             
             Text(rateVM.convertedCurrencyAmount, format: .number)
                 .font(.system(size: 80))
@@ -84,7 +81,6 @@ extension ExchangeRateView {
         }
         .padding()
         .frame(maxWidth: .infinity)
-        .frame(height: UIScreen.main.bounds.height / 5)
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .foregroundColor(.theme.darkSecondaryColor)
@@ -98,13 +94,30 @@ extension ExchangeRateView {
         } label: {
             Image(systemName: "chevron.down")
                 .imageScale(.large)
-                .frame(maxWidth: .infinity)
                 .foregroundColor(.theme.accentColor)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
         }
+    }
+    
+    private var keypads: some View {
+        VStack {
+            ForEach(rateVM.keypads, id: \.self) { row in
+                HStack {
+                    ForEach(row, id: \.self) { buttonType in
+                        NumberKeypadButtonView(buttonType, size: getButtonSize())
+                            .environmentObject(rateVM)
+                    }
+                }
+            }
+        }
+        .padding()
     }
 }
 
 // MARK: Methods
 extension ExchangeRateView {
-    
+    private func getButtonSize() -> CGFloat {
+        return (UIScreen.main.bounds.width - 4 * 48) / 3
+    }
 }

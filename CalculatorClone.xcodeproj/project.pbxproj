@@ -28,6 +28,7 @@
 		0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */; };
 		0488BC002A80C50100484208 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFF2A80C50100484208 /* LocalFileManager.swift */; };
 		0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC012A80D62D00484208 /* CalendarManager.swift */; };
+		0488BC062A8131EF00484208 /* NumberKeypadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		0488BBFF2A80C50100484208 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		0488BC012A80D62D00484208 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKeypadButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0488BBDF2A7E603200484208 /* KeypadButtonView.swift */,
+				0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				0488BBF02A7FA81900484208 /* ExchangeRateView.swift in Sources */,
 				0488BBE32A7F795F00484208 /* Color.swift in Sources */,
 				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
+				0488BC062A8131EF00484208 /* NumberKeypadButtonView.swift in Sources */,
 				0488BBFA2A7FCE3F00484208 /* Bundle+APIKey.swift in Sources */,
 				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
 				0488BBF82A7FCD2200484208 /* ExchangeRateModule.swift in Sources */,
