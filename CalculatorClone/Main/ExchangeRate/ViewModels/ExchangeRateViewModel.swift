@@ -19,6 +19,16 @@ class ExchangeRateViewModel: ObservableObject {
     
     private let module = ExchangeRateModule()
     
+    var keypads: [[ButtonType]] {
+        return [
+            [.allClear, .negative, .percent],
+            [.digit(.seven), .digit(.eight), .digit(.nine)],
+            [.digit(.four), .digit(.five), .digit(.six)],
+            [.digit(.one), .digit(.two), .digit(.three)],
+            [.digit(.zero), .decimal]
+        ]
+    }
+    
     init() {
         addSubscription()
     }
@@ -52,5 +62,9 @@ extension ExchangeRateViewModel {
         // 환율정보가 확인되었으니 환전 시 금액을 계산하여 반환
         let convertedAmount = amount * (comparisonRate / baseRate)
         return convertedAmount
+    }
+    
+    func buttonTapped(for buttonType: ButtonType) {
+        
     }
 }
