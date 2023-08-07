@@ -26,7 +26,8 @@
 		0488BBF82A7FCD2200484208 /* ExchangeRateModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */; };
 		0488BBFA2A7FCE3F00484208 /* Bundle+APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBF92A7FCE3F00484208 /* Bundle+APIKey.swift */; };
 		0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */; };
-		0488BBFE2A7FD56200484208 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFD2A7FD56200484208 /* LocalFileManager.swift */; };
+		0488BC002A80C50100484208 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFF2A80C50100484208 /* LocalFileManager.swift */; };
+		0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC012A80D62D00484208 /* CalendarManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +52,8 @@
 		0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateModule.swift; sourceTree = "<group>"; };
 		0488BBF92A7FCE3F00484208 /* Bundle+APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+APIKey.swift"; sourceTree = "<group>"; };
 		0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
-		0488BBFD2A7FD56200484208 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		0488BBFF2A80C50100484208 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		0488BC012A80D62D00484208 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +125,8 @@
 				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
 				0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */,
 				0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */,
-				0488BBFD2A7FD56200484208 /* LocalFileManager.swift */,
+				0488BBFF2A80C50100484208 /* LocalFileManager.swift */,
+				0488BC012A80D62D00484208 /* CalendarManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -276,11 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0488BC002A80C50100484208 /* LocalFileManager.swift in Sources */,
 				0488BBEE2A7FA4C200484208 /* MenuType.swift in Sources */,
 				0488BBF42A7FA83300484208 /* ExchangeRateViewModel.swift in Sources */,
+				0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */,
 				0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */,
 				0488BBEC2A7FA3F500484208 /* MainView.swift in Sources */,
-				0488BBFE2A7FD56200484208 /* LocalFileManager.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
 				0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */,
 				0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */,
