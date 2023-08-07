@@ -37,6 +37,7 @@ class ExchangeRateModule {
                 downloadExchangeRate(base: base)
                 if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel){
                     LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
+                    print("다운로드 및 파일 저장")
                 }
             } else {
                 self.exchangeRateModel = currentExchangeRateModel
@@ -46,6 +47,7 @@ class ExchangeRateModule {
             downloadExchangeRate(base: base)
             if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel){
                 LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
+                print("다운로드 및 파일 저장")
             }
         }
     }

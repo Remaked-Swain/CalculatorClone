@@ -166,7 +166,7 @@ struct CalcModule {
         newNumber = Decimal(string: newStr)
     }
     
-    internal func orderButtonIsHighlighted(_ order: Order) -> Bool {
+    func orderButtonIsHighlighted(_ order: Order) -> Bool {
         // 작성 중인 값이 없는 상태에서 현재 입력되어 있는 연산자와 지금 입력한 연산자가 같으면 그 연산자가 입력되어 있다고 강조 표시 할 수 있게 됨
         return newNumber == nil && expression?.order == order
     }
