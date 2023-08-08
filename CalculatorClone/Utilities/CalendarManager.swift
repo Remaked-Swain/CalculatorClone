@@ -36,4 +36,11 @@ class CalendarManager {
         
         return components.day
     }
+    
+    func showUTCTime(_ timestamp: String) -> String {
+        guard let date = stringToDate(timestamp: timestamp) else { return "-" }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy-MM-dd"
+        return "Last Updated. " + formatter.string(from: date)
+    }
 }

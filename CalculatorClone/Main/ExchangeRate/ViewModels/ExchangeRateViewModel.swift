@@ -45,6 +45,7 @@ class ExchangeRateViewModel: ObservableObject {
         module.$exchangeRateModel
             .sink { [weak self] receivedExchangeRateModel in
                 self?.exchangeRateModel = receivedExchangeRateModel
+                print("ExchangeRateModel Loaded.")
             }
             .store(in: &cancellables)
         
@@ -83,10 +84,8 @@ extension ExchangeRateViewModel {
     }
     
     func swapBaseCurrency() {
-        // 기준 통화와 비교 통화를 바꾸고 환율 계산을 시도하기 위한 트리거링
-        let tempAmount: Double = baseCurrencyAmount
         swap(&baseCurrency, &comparisonCurrency)
-        baseCurrencyAmount = tempAmount
+        strAmount = "0"
     }
 }
 

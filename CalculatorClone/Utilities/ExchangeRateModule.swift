@@ -16,7 +16,6 @@ class ExchangeRateModule {
     private var subscription: Cancellable?
     
     private let openKey: String = "EXCHANGE_RATE_API"
-    private let fileName: String = "CurrentExchangeRate"
     
     init() {
         loadData()
@@ -24,7 +23,7 @@ class ExchangeRateModule {
     
     func loadData(base: CurrencyCode.RawValue = "KRW") {
         // 최근에 저장되어있던 환율표가 있는지 확인
-        if let currentData = LocalFileManager.shared.fetchJSONFile(fileName: fileName),
+        if let currentData = LocalFileManager.shared.fetchJSONFile(),
            let currentExchangeRateModel = convertDataToExchangeRateModel(data: currentData) {
             // 저장된 환율표 기준 업데이트 예정 시간 참조
             let updateTime = currentExchangeRateModel.timeNextUpdateUTC ?? CalendarManager.shared.dateToString(Date.now)
@@ -35,18 +34,11 @@ class ExchangeRateModule {
             // 아니면 그냥 환율표를 가져와서 업데이트 하기
             if let difference = CalendarManager.shared.differenceInDays(from: updateTime, to: now), difference > 0 {
                 downloadExchangeRate(base: base)
-                if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel) {
-                    LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
-                }
             } else {
                 self.exchangeRateModel = currentExchangeRateModel
             }
         } else {
-            // 저장된 환율표가 없으면 새로 다운로드하고 업데이트
             downloadExchangeRate(base: base)
-            if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel){
-                LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
-            }
         }
     }
     
@@ -61,6 +53,9 @@ class ExchangeRateModule {
                     self?.exchangeRateModel = receivedExchangeRateModel
                     self?.subscription?.cancel()
                     print("ExchangeRateModel 다운로드 됨")
+                    if let data = self?.convertExchangeRateModelToData(exchangeRateModel: receivedExchangeRateModel) {
+                        LocalFileManager.shared.saveJSONFile(data: data)
+                    }
                 })
     }
 }

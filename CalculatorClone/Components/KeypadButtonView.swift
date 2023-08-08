@@ -25,7 +25,9 @@ struct KeypadButtonView: View {
     
     var body: some View {
         Button {
-            coreVM.buttonTapped(for: buttonType)
+            withAnimation(.easeInOut) {
+                coreVM.buttonTapped(for: buttonType)
+            }
         } label: {
             if isSymbol {
                 Image(systemName: buttonType.description)

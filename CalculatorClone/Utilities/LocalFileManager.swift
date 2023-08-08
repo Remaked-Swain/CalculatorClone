@@ -10,38 +10,72 @@ import Foundation
 class LocalFileManager {
     static let shared = LocalFileManager()
     
-    private init() {}
+    private let folderName: String = "ExchangeRateJSON"
+    private let fileName: String = "CurrentExchangeRate"
     
-    private func getPathForJSONFile(fileName: String) -> URL? {
-        // FileManager의 /User 내 해당 이름을 가진 파일로의 경로를 지정
-        guard let path = FileManager.default.urls(for: .userDirectory, in: .userDomainMask).first?.appendingPathComponent("\(fileName)", conformingTo: .json)
-        else { print("파일로의 경로를 찾을 수 없습니다."); return nil }
-        
-        return path
+    private init() {
+        createFolderIfNeeded()
     }
     
-    func saveJSONFile(data: Data, fileName: String) {
-        guard let path = getPathForJSONFile(fileName: fileName) else { return }
+    private func getDocumentDirectoryURL() -> URL? {
+        // 디렉토리 경로 확인
+        guard let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("디렉토리 경로를 찾을 수 없습니다.")
+            return nil
+        }
+        // 디렉토리 경로 반환
+        return documentDirectoryURL
+    }
+    
+    private func getFolderURL() -> URL? {
+        guard let documentDirectoryURL = getDocumentDirectoryURL() else { return nil }
+        let folderURL = documentDirectoryURL.appendingPathComponent(folderName, conformingTo: .folder)
+        return folderURL
+    }
+    
+    private func getJSONFileURL() -> URL? {
+        guard let folderURL = getFolderURL() else { return nil }
+        let fileURL = folderURL.appendingPathComponent(fileName, conformingTo: .json)
+        return fileURL
+    }
+    
+    private func createFolderIfNeeded() {
+        // 디렉토리 내 폴더 확인
+        guard let folderURL = getFolderURL() else { return }
+        
+        // 폴더가 존재하지 않을 경우 생성
+        if !FileManager.default.fileExists(atPath: folderURL.path()) {
+            do {
+                try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
+                print("폴더 생성")
+            } catch let error {
+                print("폴더 생성간 에러 발생: \(error)")
+            }
+        }
+    }
+    
+    func saveJSONFile(data: Data) {
+        guard let jsonFileURL = getJSONFileURL() else { return }
         
         do {
-            try data.write(to: path)
+            try data.write(to: jsonFileURL)
             print("다운로드 및 파일 저장")
         } catch let error {
             print("파일 저장 실패: \(error)")
         }
     }
     
-    func fetchJSONFile(fileName: String) -> Data? {
-        guard
-            let path = getPathForJSONFile(fileName: fileName),
-            FileManager.default.fileExists(atPath: path.path())
-        else { return nil }
+    func fetchJSONFile() -> Data? {
+        guard let jsonFileURL = getJSONFileURL(), FileManager.default.fileExists(atPath: jsonFileURL.path) else {
+            return nil
+        }
         
         do {
-            let data = try Data(contentsOf: path)
+            let data = try Data(contentsOf: jsonFileURL)
             return data
         } catch let error {
-            print("파일을 찾을 수 없습니다. \(error)"); return nil
+            print("파일을 찾을 수 없습니다. \(error)")
+            return nil
         }
     }
 }

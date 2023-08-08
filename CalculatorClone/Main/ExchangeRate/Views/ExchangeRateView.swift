@@ -15,7 +15,7 @@ struct ExchangeRateView: View {
             Color.theme.backgroundColor.ignoresSafeArea()
             
             VStack {
-                Spacer()
+                updatedTimeUTC
                 
                 baseCurrencySection
                 
@@ -37,6 +37,19 @@ struct ExchangeRateView_Previews: PreviewProvider {
 
 // MARK: Extract Views
 extension ExchangeRateView {
+    private var updatedTimeUTC: some View {
+        HStack {
+            Spacer()
+            
+            if let updatedTimeUTC = rateVM.exchangeRateModel?.timeLastUpdateUTC {
+                Text(CalendarManager.shared.showUTCTime(updatedTimeUTC))
+                    .font(.callout)
+                    .foregroundColor(.theme.textColor)
+            }
+        }
+        .padding(.horizontal)
+    }
+    
     private var baseCurrencySection: some View {
         VStack(alignment:. leading) {
             HStack {
