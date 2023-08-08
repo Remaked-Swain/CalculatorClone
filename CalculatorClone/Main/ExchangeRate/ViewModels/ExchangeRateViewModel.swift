@@ -81,6 +81,13 @@ extension ExchangeRateViewModel {
         default: return
         }
     }
+    
+    func swapBaseCurrency() {
+        // 기준 통화와 비교 통화를 바꾸고 환율 계산을 시도하기 위한 트리거링
+        let tempAmount: Double = baseCurrencyAmount
+        swap(&baseCurrency, &comparisonCurrency)
+        baseCurrencyAmount = tempAmount
+    }
 }
 
 // MARK: Private Methods
@@ -91,8 +98,8 @@ extension ExchangeRateViewModel {
     }
     
     private func canAddDigit(_ digit: Digit) -> Bool {
-        // 이미 0인데 0이 들어오지만 않으면 true
-        return strAmount != "0" && digit != .zero
+        // 0인데 0이 입력되는 상황만 아니면 true
+        return strAmount != "0" || digit != .zero
     }
     
     private func inputDigit(digit: Digit) {

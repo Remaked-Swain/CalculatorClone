@@ -42,7 +42,7 @@ extension ExchangeRateView {
             HStack {
                 Text(rateVM.baseCurrency.description)
                     .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.accentColor)
+                    .foregroundColor(.theme.textColor)
                 
                 Spacer()
             }
@@ -68,14 +68,14 @@ extension ExchangeRateView {
             HStack {
                 Text(rateVM.comparisonCurrency.description)
                     .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.accentColor)
+                    .foregroundColor(.theme.textColor)
                 
                 Spacer()
             }
             
             Text(rateVM.convertedCurrencyAmount, format: .number)
                 .font(.system(size: 80))
-                .foregroundColor(.theme.textColor)
+                .foregroundColor(.theme.accentColor)
                 .lineLimit(1)
                 .minimumScaleFactor(0.2)
         }
@@ -90,7 +90,9 @@ extension ExchangeRateView {
     
     private var swapCurrencyButton: some View {
         Button {
-            // swap currency
+            withAnimation(.easeInOut) {
+                rateVM.swapBaseCurrency()
+            }
         } label: {
             Image(systemName: "chevron.down")
                 .imageScale(.large)

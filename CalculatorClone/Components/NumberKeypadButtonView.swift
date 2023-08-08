@@ -24,6 +24,6 @@ struct NumberKeypadButtonView: View {
         } label: {
             Text(buttonType.description)
         }
-        .buttonStyle(KeypadButtonStyle(size: size, foregroundColor: buttonType.foregroundColor, backgroundColor: buttonType.backgroundColor))
+        .buttonStyle(KeypadButtonStyle(size: size, foregroundColor: buttonType.foregroundColor, backgroundColor: buttonType.backgroundColor, isWide: true))
     }
 }

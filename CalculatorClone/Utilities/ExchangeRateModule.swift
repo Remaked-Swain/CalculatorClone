@@ -35,9 +35,8 @@ class ExchangeRateModule {
             // 아니면 그냥 환율표를 가져와서 업데이트 하기
             if let difference = CalendarManager.shared.differenceInDays(from: updateTime, to: now), difference > 0 {
                 downloadExchangeRate(base: base)
-                if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel){
+                if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel) {
                     LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
-                    print("다운로드 및 파일 저장")
                 }
             } else {
                 self.exchangeRateModel = currentExchangeRateModel
@@ -47,7 +46,6 @@ class ExchangeRateModule {
             downloadExchangeRate(base: base)
             if let exchangeRateModel = self.exchangeRateModel, let data = convertExchangeRateModelToData(exchangeRateModel: exchangeRateModel){
                 LocalFileManager.shared.saveJSONFile(data: data, fileName: fileName)
-                print("다운로드 및 파일 저장")
             }
         }
     }
