@@ -20,9 +20,7 @@ struct NumberKeypadButtonView: View {
     
     var body: some View {
         Button {
-            withAnimation(.easeInOut) {
-                rateVM.buttonTapped(for: buttonType)
-            }
+            rateVM.buttonTapped(for: buttonType)
         } label: {
             Text(buttonType.description)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CurrencyCode: String, CustomStringConvertible {
+enum CurrencyCode: String, CaseIterable, CustomStringConvertible {
     case KRW
     case AED
     case AFN

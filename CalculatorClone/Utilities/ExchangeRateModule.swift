@@ -21,7 +21,7 @@ class ExchangeRateModule {
         loadData()
     }
     
-    func loadData(base: CurrencyCode.RawValue = "KRW") {
+    private func loadData(base: CurrencyCode.RawValue = "KRW") {
         // 최근에 저장되어있던 환율표가 있는지 확인
         if let currentData = LocalFileManager.shared.fetchJSONFile(),
            let currentExchangeRateModel = convertDataToExchangeRateModel(data: currentData) {

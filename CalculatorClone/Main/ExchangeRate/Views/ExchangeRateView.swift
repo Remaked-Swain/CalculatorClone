@@ -41,8 +41,8 @@ extension ExchangeRateView {
         HStack {
             Spacer()
             
-            if let updatedTimeUTC = rateVM.exchangeRateModel?.timeLastUpdateUTC {
-                Text(CalendarManager.shared.showUTCTime(updatedTimeUTC))
+            if let exchangeRateModel = rateVM.exchangeRateModel {
+                Text("ExchangeRate Updated on, \(CalendarManager.shared.showUTCTime(exchangeRateModel))")
                     .font(.callout)
                     .foregroundColor(.theme.textColor)
             }
@@ -53,9 +53,21 @@ extension ExchangeRateView {
     private var baseCurrencySection: some View {
         VStack(alignment:. leading) {
             HStack {
-                Text(rateVM.baseCurrency.description)
-                    .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.textColor)
+                Menu {
+                    ForEach(CurrencyCode.allCases, id: \.self) { currencyCode in
+                        Button {
+                            selectBaseCurrency(currencyCode)
+                        } label: {
+                            Text(currencyCode.description)
+                        }
+                    }
+                } label: {
+                    Text(rateVM.baseCurrency.description)
+                        .font(.title3.weight(.semibold))
+                        .foregroundColor(.theme.textColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                }
                 
                 Spacer()
             }
@@ -79,9 +91,21 @@ extension ExchangeRateView {
     private var comparisonCurrencySection: some View {
         VStack(alignment:. leading) {
             HStack {
-                Text(rateVM.comparisonCurrency.description)
-                    .font(.title3.weight(.semibold))
-                    .foregroundColor(.theme.textColor)
+                Menu {
+                    ForEach(CurrencyCode.allCases, id: \.self) { currencyCode in
+                        Button {
+                            selectComparisonCurrency(currencyCode)
+                        } label: {
+                            Text(currencyCode.description)
+                        }
+                    }
+                } label: {
+                    Text(rateVM.comparisonCurrency.description)
+                        .font(.title3.weight(.semibold))
+                        .foregroundColor(.theme.textColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                }
                 
                 Spacer()
             }
@@ -134,5 +158,17 @@ extension ExchangeRateView {
 extension ExchangeRateView {
     private func getButtonSize() -> CGFloat {
         return (UIScreen.main.bounds.width - 4 * 48) / 3
+    }
+    
+    private func selectBaseCurrency(_ currencyCode: CurrencyCode) {
+        withAnimation(.easeInOut) {
+            rateVM.selectBaseCurrency(currencyCode)
+        }
+    }
+    
+    private func selectComparisonCurrency(_ currencyCode: CurrencyCode) {
+        withAnimation(.easeInOut) {
+            rateVM.selectComparisonCurrency(currencyCode)
+        }
     }
 }

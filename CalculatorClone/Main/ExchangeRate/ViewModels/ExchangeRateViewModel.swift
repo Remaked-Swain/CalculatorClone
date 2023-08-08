@@ -87,6 +87,16 @@ extension ExchangeRateViewModel {
         swap(&baseCurrency, &comparisonCurrency)
         strAmount = "0"
     }
+    
+    func selectBaseCurrency(_ currencyCode: CurrencyCode) {
+        self.baseCurrency = currencyCode
+        strAmount = "0"
+    }
+    
+    func selectComparisonCurrency(_ currencyCode: CurrencyCode) {
+        self.comparisonCurrency = currencyCode
+        strAmount = "0"
+    }
 }
 
 // MARK: Private Methods
