@@ -45,7 +45,6 @@ class ExchangeRateViewModel: ObservableObject {
         module.$exchangeRateModel
             .sink { [weak self] receivedExchangeRateModel in
                 self?.exchangeRateModel = receivedExchangeRateModel
-                print("ExchangeRateModel Loaded.")
             }
             .store(in: &cancellables)
         

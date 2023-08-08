@@ -15,6 +15,7 @@ struct MainView: View {
             switch selectedMenu {
             case .core: CoreView()
             case .exchangeRate: ExchangeRateView()
+            case .measurement: MeasurementView()
             }
             
             menuSelector
@@ -31,16 +32,12 @@ struct MainView_Previews: PreviewProvider {
 extension MainView {
     private var menuSelector: some View {
         Menu {
-            Button {
-                selectedMenu = .core
-            } label: {
-                Text("일반 계산기")
-            }
-            
-            Button {
-                selectedMenu = .exchangeRate
-            } label: {
-                Text("환율")
+            ForEach(MenuType.allCases, id: \.self) { menuType in
+                Button {
+                    selectedMenu = menuType
+                } label: {
+                    Text(menuType.title)
+                }
             }
         } label: {
             Image(systemName: "line.3.horizontal")
