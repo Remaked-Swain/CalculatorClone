@@ -8,5 +8,5 @@
 import Foundation
 
 class MeasurementViewModel: ObservableObject {
-    @Published var baseMeasurement: Measurement = Measurement(value: 0, unit: UnitLength.meters)
+    @Published var baseMeasurementUnit: MeasurementUnit = UnitArea.self
 }
