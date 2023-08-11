@@ -15,18 +15,8 @@ class ExchangeRateViewModel: ObservableObject {
     @Published var convertedCurrencyAmount: Double = 0
     @Published var exchangeRateModel: ExchangeRateModel?
     
-    private var cancellables = Set<AnyCancellable>()
-    
     private let module = ExchangeRateModule()
-    
-    var keypads: [[ButtonType]] {
-        return [
-            [.digit(.seven), .digit(.eight), .digit(.nine)],
-            [.digit(.four), .digit(.five), .digit(.six)],
-            [.digit(.one), .digit(.two), .digit(.three)],
-            [.digit(.zero), .decimal, .allClear]
-        ]
-    }
+    private var cancellables = Set<AnyCancellable>()
     
     private var containsDecimal: Bool { return strAmount.contains(".") }
     
@@ -35,6 +25,15 @@ class ExchangeRateViewModel: ObservableObject {
             guard let amount = convertStringToDouble(strAmount) else { return }
             baseCurrencyAmount = amount
         }
+    }
+    
+    var keypads: [[ButtonType]] {
+        return [
+            [.digit(.seven), .digit(.eight), .digit(.nine)],
+            [.digit(.four), .digit(.five), .digit(.six)],
+            [.digit(.one), .digit(.two), .digit(.three)],
+            [.digit(.zero), .decimal, .allClear]
+        ]
     }
     
     init() {
@@ -58,20 +57,6 @@ class ExchangeRateViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-}
-
-// MARK: Internal Methods
-extension ExchangeRateViewModel {
-    func convertAmount(amount: Double, baseCurrencyCode: CurrencyCode.RawValue, comparisonCurrencyCode: CurrencyCode.RawValue) -> Double? {
-        // 환율표에서 환율정보를 가져오기, 실패하면 nil 반환
-        guard let baseRate = exchangeRateModel?.conversionRates?[baseCurrencyCode],
-              let comparisonRate = exchangeRateModel?.conversionRates?[comparisonCurrencyCode]
-        else { return nil }
-        
-        // 환율정보가 확인되었으니 환전 시 금액을 계산하여 반환
-        let convertedAmount = amount * (comparisonRate / baseRate)
-        return convertedAmount
-    }
     
     func buttonTapped(for buttonType: ButtonType) {
         switch buttonType {
@@ -80,6 +65,20 @@ extension ExchangeRateViewModel {
         case .allClear: inputAllClear();
         default: return
         }
+    }
+}
+
+// MARK: Internal Methods
+extension ExchangeRateViewModel {
+    private func convertAmount(amount: Double, baseCurrencyCode: CurrencyCode.RawValue, comparisonCurrencyCode: CurrencyCode.RawValue) -> Double? {
+        // 환율표에서 환율정보를 가져오기, 실패하면 nil 반환
+        guard let baseRate = exchangeRateModel?.conversionRates?[baseCurrencyCode],
+              let comparisonRate = exchangeRateModel?.conversionRates?[comparisonCurrencyCode]
+        else { return nil }
+        
+        // 환율정보가 확인되었으니 환전 시 금액을 계산하여 반환
+        let convertedAmount = amount * (comparisonRate / baseRate)
+        return convertedAmount
     }
     
     func swapBaseCurrency() {
