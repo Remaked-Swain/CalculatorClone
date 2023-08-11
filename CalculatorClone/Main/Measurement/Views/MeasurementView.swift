@@ -1,27 +1,27 @@
 //
-//  ExchangeRateView.swift
+//  MeasurementView.swift
 //  CalculatorClone
 //
-//  Created by Swain Yun on 2023/08/06.
+//  Created by Swain Yun on 2023/08/11.
 //
 
 import SwiftUI
 
-struct ExchangeRateView: View {
-    @StateObject private var rateVM = ExchangeRateViewModel()
+struct MeasurementView: View {
+    @StateObject private var measurementVM = MeasurementViewModel()
     
     var body: some View {
         ZStack {
             Color.theme.backgroundColor.ignoresSafeArea()
             
             VStack {
-                updatedTimeUTC
+                measurementMenu
                 
-                baseCurrencySection
+                baseUnitSection
                 
-                swapCurrencyButton
+                swapUnitTypeButton
                 
-                comparisonCurrencySection
+                comparisonUnitSection
                 
                 keypads
             }
@@ -29,41 +29,38 @@ struct ExchangeRateView: View {
     }
 }
 
-struct ExchangeRateView_Previews: PreviewProvider {
+struct MeasurementView_Previews: PreviewProvider {
     static var previews: some View {
-        ExchangeRateView()
+        MeasurementView()
     }
 }
 
 // MARK: Extract Views
-extension ExchangeRateView {
-    private var updatedTimeUTC: some View {
+extension MeasurementView {
+    private var measurementMenu: some View {
         HStack {
             Spacer()
             
-            if let exchangeRateModel = rateVM.exchangeRateModel {
-                Text("ExchangeRate Updated on, \(CalendarManager.shared.showUTCTime(exchangeRateModel))")
+            Menu {
+                // content
+            } label: {
+                Text("Measurement Name")
                     .font(.callout)
                     .foregroundColor(.theme.textColor)
                     .padding(10)
+                    .background(Color.theme.accentColor.cornerRadius(10))
             }
         }
         .padding(.horizontal)
     }
     
-    private var baseCurrencySection: some View {
+    private var baseUnitSection: some View {
         VStack(alignment:. leading) {
             HStack {
                 Menu {
-                    ForEach(CurrencyCode.allCases, id: \.self) { currencyCode in
-                        Button {
-                            selectBaseCurrency(currencyCode)
-                        } label: {
-                            Text(currencyCode.description)
-                        }
-                    }
+                    // content
                 } label: {
-                    Text(rateVM.baseCurrency.description)
+                    Text("선택된 측정 단위명")
                         .font(.title3.weight(.semibold))
                         .foregroundColor(.theme.textColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -73,7 +70,7 @@ extension ExchangeRateView {
                 Spacer()
             }
             
-            Text(rateVM.baseCurrencyAmount, format: .number)
+            Text(measurementVM.baseUnitAmount, format: .number)
                 .keyboardType(.decimalPad)
                 .font(.system(size: 80))
                 .foregroundColor(.theme.textColor)
@@ -89,19 +86,13 @@ extension ExchangeRateView {
         .padding()
     }
     
-    private var comparisonCurrencySection: some View {
+    private var comparisonUnitSection: some View {
         VStack(alignment:. leading) {
             HStack {
                 Menu {
-                    ForEach(CurrencyCode.allCases, id: \.self) { currencyCode in
-                        Button {
-                            selectComparisonCurrency(currencyCode)
-                        } label: {
-                            Text(currencyCode.description)
-                        }
-                    }
+                    // content
                 } label: {
-                    Text(rateVM.comparisonCurrency.description)
+                    Text("선택된 측정 단위명")
                         .font(.title3.weight(.semibold))
                         .foregroundColor(.theme.textColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -111,7 +102,8 @@ extension ExchangeRateView {
                 Spacer()
             }
             
-            Text(rateVM.convertedCurrencyAmount, format: .number)
+            Text(measurementVM.comparisonAmount, format: .number)
+                .keyboardType(.decimalPad)
                 .font(.system(size: 80))
                 .foregroundColor(.theme.accentColor)
                 .lineLimit(1)
@@ -126,10 +118,10 @@ extension ExchangeRateView {
         .padding()
     }
     
-    private var swapCurrencyButton: some View {
+    private var swapUnitTypeButton: some View {
         Button {
             withAnimation(.easeInOut) {
-                rateVM.swapBaseCurrency()
+                // swap unit type
             }
         } label: {
             Image(systemName: "chevron.down")
@@ -142,11 +134,11 @@ extension ExchangeRateView {
     
     private var keypads: some View {
         VStack {
-            ForEach(rateVM.keypads, id: \.self) { row in
+            ForEach(measurementVM.keypads, id: \.self) { row in
                 HStack {
                     ForEach(row, id: \.self) { buttonType in
-                        NumberKeypadButtonView(buttonType, size: getButtonSize())
-                            .environmentObject(rateVM)
+                        NumberKeypadButtonView2(buttonType, size: getButtonSize())
+                            .environmentObject(measurementVM)
                     }
                 }
             }
@@ -156,20 +148,8 @@ extension ExchangeRateView {
 }
 
 // MARK: Methods
-extension ExchangeRateView {
+extension MeasurementView {
     private func getButtonSize() -> CGFloat {
         return (UIScreen.main.bounds.width - 4 * 48) / 3
-    }
-    
-    private func selectBaseCurrency(_ currencyCode: CurrencyCode) {
-        withAnimation(.easeInOut) {
-            rateVM.selectBaseCurrency(currencyCode)
-        }
-    }
-    
-    private func selectComparisonCurrency(_ currencyCode: CurrencyCode) {
-        withAnimation(.easeInOut) {
-            rateVM.selectComparisonCurrency(currencyCode)
-        }
     }
 }

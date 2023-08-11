@@ -15,6 +15,7 @@ struct MainView: View {
             switch selectedMenu {
             case .core: CoreView()
             case .exchangeRate: ExchangeRateView()
+            case .measurement: MeasurementView()
             }
             
             menuSelector

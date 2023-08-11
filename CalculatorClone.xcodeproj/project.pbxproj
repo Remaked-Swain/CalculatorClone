@@ -29,6 +29,9 @@
 		0488BC002A80C50100484208 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BBFF2A80C50100484208 /* LocalFileManager.swift */; };
 		0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC012A80D62D00484208 /* CalendarManager.swift */; };
 		0488BC062A8131EF00484208 /* NumberKeypadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */; };
+		049CDC1C2A8630D900FD91F4 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1B2A8630D900FD91F4 /* MeasurementView.swift */; };
+		049CDC1E2A86313B00FD91F4 /* MeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1D2A86313B00FD91F4 /* MeasurementViewModel.swift */; };
+		049CDC202A86354900FD91F4 /* MeasurementConvertModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		0488BBFF2A80C50100484208 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		0488BC012A80D62D00484208 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKeypadButtonView.swift; sourceTree = "<group>"; };
+		049CDC1B2A8630D900FD91F4 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
+		049CDC1D2A86313B00FD91F4 /* MeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewModel.swift; sourceTree = "<group>"; };
+		049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementConvertModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 			children = (
 				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
 				0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */,
+				049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */,
 				0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */,
 				0488BBFF2A80C50100484208 /* LocalFileManager.swift */,
 				0488BC012A80D62D00484208 /* CalendarManager.swift */,
@@ -180,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				0488BBEB2A7FA3F500484208 /* MainView.swift */,
+				049CDC182A8630B800FD91F4 /* Measurement */,
 				0488BBEA2A7FA3E400484208 /* ExchangeRate */,
 				0488BBD72A7E5B0700484208 /* Core */,
 			);
@@ -207,6 +215,31 @@
 			isa = PBXGroup;
 			children = (
 				0488BBF32A7FA83300484208 /* ExchangeRateViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		049CDC182A8630B800FD91F4 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				049CDC1A2A8630C700FD91F4 /* ViewModels */,
+				049CDC192A8630C300FD91F4 /* Views */,
+			);
+			path = Measurement;
+			sourceTree = "<group>";
+		};
+		049CDC192A8630C300FD91F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				049CDC1B2A8630D900FD91F4 /* MeasurementView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		049CDC1A2A8630C700FD91F4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				049CDC1D2A86313B00FD91F4 /* MeasurementViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -288,6 +321,7 @@
 				0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */,
 				0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */,
 				0488BBEC2A7FA3F500484208 /* MainView.swift in Sources */,
+				049CDC202A86354900FD91F4 /* MeasurementConvertModule.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
 				0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */,
 				0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */,
@@ -295,6 +329,8 @@
 				0488BBE32A7F795F00484208 /* Color.swift in Sources */,
 				0488BBDD2A7E5B4000484208 /* CoreViewModel.swift in Sources */,
 				0488BC062A8131EF00484208 /* NumberKeypadButtonView.swift in Sources */,
+				049CDC1E2A86313B00FD91F4 /* MeasurementViewModel.swift in Sources */,
+				049CDC1C2A8630D900FD91F4 /* MeasurementView.swift in Sources */,
 				0488BBFA2A7FCE3F00484208 /* Bundle+APIKey.swift in Sources */,
 				0488BBDB2A7E5B2C00484208 /* CoreView.swift in Sources */,
 				0488BBF82A7FCD2200484208 /* ExchangeRateModule.swift in Sources */,

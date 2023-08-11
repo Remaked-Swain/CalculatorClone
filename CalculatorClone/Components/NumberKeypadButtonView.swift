@@ -29,3 +29,26 @@ struct NumberKeypadButtonView: View {
         .buttonStyle(KeypadButtonStyle(size: size, foregroundColor: buttonType.foregroundColor, backgroundColor: buttonType.backgroundColor, isWide: true))
     }
 }
+
+struct NumberKeypadButtonView2: View {
+    @EnvironmentObject private var measurementVM: MeasurementViewModel
+    
+    let buttonType: ButtonType
+    let size: CGFloat
+    
+    init(_ buttonType: ButtonType, size: CGFloat) {
+        self.buttonType = buttonType
+        self.size = size
+    }
+    
+    var body: some View {
+        Button {
+            withAnimation(.easeInOut) {
+                measurementVM.buttonTapped(for: buttonType)
+            }
+        } label: {
+            Text(buttonType.description)
+        }
+        .buttonStyle(KeypadButtonStyle(size: size, foregroundColor: buttonType.foregroundColor, backgroundColor: buttonType.backgroundColor, isWide: true))
+    }
+}
