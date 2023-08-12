@@ -42,13 +42,20 @@ extension MeasurementView {
             Spacer()
             
             Menu {
-                // content
+                ForEach(UnitType.allCases, id: \.self) { unitType in
+                    Button {
+                        measurementVM.selectUnitType(unitType)
+                    } label: {
+                        Text(unitType.description)
+                    }
+                }
             } label: {
-                Text("Measurement Name")
+                Text(measurementVM.selectedUnitType.description)
                     .font(.callout)
                     .foregroundColor(.theme.textColor)
                     .padding(10)
                     .background(Color.theme.accentColor.cornerRadius(10))
+                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
         .padding(.horizontal)
@@ -102,7 +109,7 @@ extension MeasurementView {
                 Spacer()
             }
             
-            Text(measurementVM.comparisonAmount, format: .number)
+            Text(measurementVM.comparisonUnitAmount, format: .number)
                 .keyboardType(.decimalPad)
                 .font(.system(size: 80))
                 .foregroundColor(.theme.accentColor)

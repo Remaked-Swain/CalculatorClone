@@ -31,7 +31,7 @@
 		0488BC062A8131EF00484208 /* NumberKeypadButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */; };
 		049CDC1C2A8630D900FD91F4 /* MeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1B2A8630D900FD91F4 /* MeasurementView.swift */; };
 		049CDC1E2A86313B00FD91F4 /* MeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1D2A86313B00FD91F4 /* MeasurementViewModel.swift */; };
-		049CDC202A86354900FD91F4 /* MeasurementConvertModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */; };
+		049CDC222A87955F00FD91F4 /* UnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049CDC212A87955F00FD91F4 /* UnitType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,7 @@
 		0488BC052A8131EF00484208 /* NumberKeypadButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKeypadButtonView.swift; sourceTree = "<group>"; };
 		049CDC1B2A8630D900FD91F4 /* MeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementView.swift; sourceTree = "<group>"; };
 		049CDC1D2A86313B00FD91F4 /* MeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewModel.swift; sourceTree = "<group>"; };
-		049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementConvertModule.swift; sourceTree = "<group>"; };
+		049CDC212A87955F00FD91F4 /* UnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +123,7 @@
 				0488BBD12A7E476100484208 /* KeypadButton.swift */,
 				0488BBE42A7FA1AF00484208 /* ExchangeRateModel.swift */,
 				0488BBF52A7FC60D00484208 /* CurrencyCode.swift */,
+				049CDC212A87955F00FD91F4 /* UnitType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,7 +133,6 @@
 			children = (
 				0488BBD52A7E4BBA00484208 /* CalcModule.swift */,
 				0488BBF72A7FCD2200484208 /* ExchangeRateModule.swift */,
-				049CDC1F2A86354900FD91F4 /* MeasurementConvertModule.swift */,
 				0488BBFB2A7FCFEB00484208 /* NetworkingManager.swift */,
 				0488BBFF2A80C50100484208 /* LocalFileManager.swift */,
 				0488BC012A80D62D00484208 /* CalendarManager.swift */,
@@ -315,13 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049CDC222A87955F00FD91F4 /* UnitType.swift in Sources */,
 				0488BC002A80C50100484208 /* LocalFileManager.swift in Sources */,
 				0488BBEE2A7FA4C200484208 /* MenuType.swift in Sources */,
 				0488BBF42A7FA83300484208 /* ExchangeRateViewModel.swift in Sources */,
 				0488BC022A80D62D00484208 /* CalendarManager.swift in Sources */,
 				0488BBE02A7E603200484208 /* KeypadButtonView.swift in Sources */,
 				0488BBEC2A7FA3F500484208 /* MainView.swift in Sources */,
-				049CDC202A86354900FD91F4 /* MeasurementConvertModule.swift in Sources */,
 				0488BBD62A7E4BBA00484208 /* CalcModule.swift in Sources */,
 				0488BBFC2A7FCFEB00484208 /* NetworkingManager.swift in Sources */,
 				0488BBE52A7FA1AF00484208 /* ExchangeRateModel.swift in Sources */,

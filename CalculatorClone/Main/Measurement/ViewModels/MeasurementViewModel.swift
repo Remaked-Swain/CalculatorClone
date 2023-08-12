@@ -9,8 +9,11 @@ import Foundation
 import Combine
 
 class MeasurementViewModel: ObservableObject {
+    @Published var selectedUnitType: UnitType = .area
+    @Published var baseUnit: Dimension.Type = UnitType.area.units
     @Published var baseUnitAmount: Double = 0
-    @Published var comparisonAmount: Double = 0
+    @Published var comparisonUnit: Dimension.Type = UnitType.area.units
+    @Published var comparisonUnitAmount: Double = 0
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -37,7 +40,12 @@ class MeasurementViewModel: ObservableObject {
     }
     
     private func addSubscription() {
-        
+        $selectedUnitType
+            .sink { [weak self] receiveUnitType in
+                self?.baseUnit = receiveUnitType.units
+                self?.comparisonUnit = receiveUnitType.units
+            }
+            .store(in: &cancellables)
     }
     
     func buttonTapped(for buttonType: ButtonType) {
@@ -47,6 +55,13 @@ class MeasurementViewModel: ObservableObject {
         case .allClear: inputAllClear();
         default: return
         }
+    }
+}
+
+// MARK: Internal Methods
+extension MeasurementViewModel {
+    func selectUnitType(_ unitType: UnitType) {
+        self.selectedUnitType = unitType
     }
 }
 
