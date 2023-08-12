@@ -70,17 +70,6 @@ class ExchangeRateViewModel: ObservableObject {
 
 // MARK: Internal Methods
 extension ExchangeRateViewModel {
-    private func convertAmount(amount: Double, baseCurrencyCode: CurrencyCode.RawValue, comparisonCurrencyCode: CurrencyCode.RawValue) -> Double? {
-        // 환율표에서 환율정보를 가져오기, 실패하면 nil 반환
-        guard let baseRate = exchangeRateModel?.conversionRates?[baseCurrencyCode],
-              let comparisonRate = exchangeRateModel?.conversionRates?[comparisonCurrencyCode]
-        else { return nil }
-        
-        // 환율정보가 확인되었으니 환전 시 금액을 계산하여 반환
-        let convertedAmount = amount * (comparisonRate / baseRate)
-        return convertedAmount
-    }
-    
     func swapBaseCurrency() {
         swap(&baseCurrency, &comparisonCurrency)
         strAmount = "0"
@@ -99,6 +88,17 @@ extension ExchangeRateViewModel {
 
 // MARK: Private Methods
 extension ExchangeRateViewModel {
+    private func convertAmount(amount: Double, baseCurrencyCode: CurrencyCode.RawValue, comparisonCurrencyCode: CurrencyCode.RawValue) -> Double? {
+        // 환율표에서 환율정보를 가져오기, 실패하면 nil 반환
+        guard let baseRate = exchangeRateModel?.conversionRates?[baseCurrencyCode],
+              let comparisonRate = exchangeRateModel?.conversionRates?[comparisonCurrencyCode]
+        else { return nil }
+        
+        // 환율정보가 확인되었으니 환전 시 금액을 계산하여 반환
+        let convertedAmount = amount * (comparisonRate / baseRate)
+        return convertedAmount
+    }
+    
     private func convertStringToDouble(_ str: String) -> Double? {
         guard let number = Double(str) else { return nil }
         return number

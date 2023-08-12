@@ -10,9 +10,10 @@ import Combine
 
 class MeasurementViewModel: ObservableObject {
     @Published var selectedUnitType: UnitType = .area
-    @Published var baseUnit: Dimension.Type = UnitType.area.units
+    @Published var selectableUnitList: [Dimension] = []
+    @Published var baseUnit: Dimension?
     @Published var baseUnitAmount: Double = 0
-    @Published var comparisonUnit: Dimension.Type = UnitType.area.units
+    @Published var comparisonUnit: Dimension?
     @Published var comparisonUnitAmount: Double = 0
     
     private var cancellables = Set<AnyCancellable>()
@@ -42,8 +43,18 @@ class MeasurementViewModel: ObservableObject {
     private func addSubscription() {
         $selectedUnitType
             .sink { [weak self] receiveUnitType in
-                self?.baseUnit = receiveUnitType.units
-                self?.comparisonUnit = receiveUnitType.units
+                self?.selectableUnitList = receiveUnitType.unitList
+                self?.baseUnit = receiveUnitType.unitList.first
+                self?.comparisonUnit = receiveUnitType.unitList.first
+            }
+            .store(in: &cancellables)
+        
+        $baseUnitAmount
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] receiveAmount in
+                guard let self = self, let baseUnit = baseUnit, let comparisonUnit = comparisonUnit else { return }
+                self.comparisonUnitAmount = convertUnit(receiveAmount, baseUnit, comparisonUnit)
             }
             .store(in: &cancellables)
     }
@@ -63,10 +74,23 @@ extension MeasurementViewModel {
     func selectUnitType(_ unitType: UnitType) {
         self.selectedUnitType = unitType
     }
+    
+    func selectBaseUnit(_ dimension: Dimension) {
+        self.baseUnit = dimension
+    }
+    
+    func selectComparisonUnit(_ dimension: Dimension) {
+        self.comparisonUnit = dimension
+    }
 }
 
 // MARK: Private Methods
 extension MeasurementViewModel {
+    private func convertUnit(_ amount: Double, _ baseUnit: Dimension, _ comparisonUnit: Dimension) -> Double {
+        let baseMeasurement = Measurement(value: amount, unit: baseUnit)
+        return baseMeasurement.converted(to: comparisonUnit).value
+    }
+    
     private func convertStringToDouble(_ str: String) -> Double? {
         guard let number = Double(str) else { return nil }
         return number

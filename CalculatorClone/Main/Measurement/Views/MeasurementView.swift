@@ -65,9 +65,17 @@ extension MeasurementView {
         VStack(alignment:. leading) {
             HStack {
                 Menu {
-                    // content
+                    ForEach(measurementVM.selectableUnitList, id: \.self) { dimension in
+                        Button {
+                            selectBaseUnit(dimension)
+                        } label: {
+                            HStack {
+                                Text(dimension.symbol)
+                            }
+                        }
+                    }
                 } label: {
-                    Text("선택된 측정 단위명")
+                    Text(measurementVM.baseUnit?.symbol ?? "단위 없음")
                         .font(.title3.weight(.semibold))
                         .foregroundColor(.theme.textColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -97,9 +105,17 @@ extension MeasurementView {
         VStack(alignment:. leading) {
             HStack {
                 Menu {
-                    // content
+                    ForEach(measurementVM.selectableUnitList, id: \.self) { dimension in
+                        Button {
+                            selectComparisonUnit(dimension)
+                        } label: {
+                            HStack {
+                                Text(dimension.symbol)
+                            }
+                        }
+                    }
                 } label: {
-                    Text("선택된 측정 단위명")
+                    Text(measurementVM.comparisonUnit?.symbol ?? "단위 없음")
                         .font(.title3.weight(.semibold))
                         .foregroundColor(.theme.textColor)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -158,5 +174,17 @@ extension MeasurementView {
 extension MeasurementView {
     private func getButtonSize() -> CGFloat {
         return (UIScreen.main.bounds.width - 4 * 48) / 3
+    }
+    
+    func selectBaseUnit(_ dimension: Dimension) {
+        withAnimation(.easeInOut) {
+            measurementVM.selectBaseUnit(dimension)
+        }
+    }
+    
+    func selectComparisonUnit(_ dimension: Dimension) {
+        withAnimation(.easeInOut) {
+            measurementVM.selectComparisonUnit(dimension)
+        }
     }
 }
