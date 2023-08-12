@@ -75,12 +75,19 @@ extension MeasurementViewModel {
         self.selectedUnitType = unitType
     }
     
+    func swapUnits() {
+        swap(&baseUnit, &comparisonUnit)
+        strAmount = "0"
+    }
+    
     func selectBaseUnit(_ dimension: Dimension) {
         self.baseUnit = dimension
+        strAmount = "0"
     }
     
     func selectComparisonUnit(_ dimension: Dimension) {
         self.comparisonUnit = dimension
+        strAmount = "0"
     }
 }
 

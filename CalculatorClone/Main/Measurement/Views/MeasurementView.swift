@@ -144,7 +144,7 @@ extension MeasurementView {
     private var swapUnitTypeButton: some View {
         Button {
             withAnimation(.easeInOut) {
-                // swap unit type
+                measurementVM.swapUnits()
             }
         } label: {
             Image(systemName: "chevron.down")
