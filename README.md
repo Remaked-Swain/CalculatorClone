@@ -9,16 +9,13 @@
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_Menu.PNG?raw=true" alt="Menu" width="250px">
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_ExchangeRateView.PNG?raw=true" alt="ExchangeRateView" width="250px">
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_ExchangeRateView_CurrencyMenu.PNG?raw=true" alt="CurrencyMenu" width="250px">
-</p>
-
-<p>
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView.PNG?raw=true" alt="MeasurementView" width="250px">
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView_2.PNG?raw=true" alt="MeasurementView2" width="250px">
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView_DimensionMenu.PNG?raw=true" alt="DimensionMenu" width="250px">
 </p>
 
-    * 아이폰 기본 앱 중 하나인 계산기 앱을 따라 만들어 봄.
-    * 또한 이 계산기에 새로운 기능을 넣어보고 싶어졌고, 이에 다양한 통화에 대한 환율 계산을 수행하는 기능과 측정 단위를 변환해주는 기능을 넣기로 하였음.
+> 아이폰 기본 앱 중 하나인 계산기 앱을 따라 만들어 봄.
+> 또한 이 계산기에 새로운 기능을 넣어보고 싶어졌고, 이에 다양한 통화에 대한 환율 계산을 수행하는 기능과 측정 단위를 변환해주는 기능을 넣기로 하였음.
 
 ---------------------------------------
 
@@ -254,4 +251,169 @@ class LocalFileManager {
 ---------------------------------------
 
 ## MeasurementViewModel & UnitType
+Dimension과 그 서브클래스인 각종 유닛들에 대하여 관리하기 위한 UnitType 열거형과 뷰 모델
+
+* UnitType
+
+```Swift
+@frozen enum UnitType: String, CaseIterable, CustomStringConvertible {
+    case acceleration, angle, area, concentrationMass, duration, electricCharge, electricCurrent, electricPotentialDifference, electricResistance, energy, frequency, fuelEfficiency, informationStorage, length, mass, power, pressure, speed, temperature, volume
+    
+    var unitList: [Dimension] {
+        switch self {
+        case .acceleration: return Acceleration.allCases.map {$0.unit}
+        case .angle: return Angle.allCases.map {$0.unit}
+        case .area: return Area.allCases.map {$0.unit}
+        case .concentrationMass: return ConcentrationMass.allCases.map {$0.unit}
+        case .duration: return Duration.allCases.map {$0.unit}
+        case .electricCharge: return ElectricCharge.allCases.map {$0.unit}
+        case .electricCurrent: return ElectricCurrent.allCases.map {$0.unit}
+        case .electricPotentialDifference: return ElectricPotentialDifference.allCases.map {$0.unit}
+        case .electricResistance: return ElectricResistance.allCases.map {$0.unit}
+        case .energy: return Energy.allCases.map {$0.unit}
+        case .frequency: return Frequency.allCases.map {$0.unit}
+        case .fuelEfficiency: return FuelEfficiency.allCases.map {$0.unit}
+        case .informationStorage: return InformationStorage.allCases.map {$0.unit}
+        case .length: return Length.allCases.map {$0.unit}
+        case .mass: return Mass.allCases.map {$0.unit}
+        case .power: return Power.allCases.map {$0.unit}
+        case .pressure: return Pressure.allCases.map {$0.unit}
+        case .speed: return Speed.allCases.map {$0.unit}
+        case .temperature: return Temperature.allCases.map {$0.unit}
+        case .volume: return Volume.allCases.map {$0.unit}
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .acceleration: return "가속도"
+        case .angle: return "각도"
+        case .area: return "면적"
+        case .concentrationMass: return "질량 농도"
+        case .duration: return "시간"
+        case .electricCharge: return "전하량"
+        case .electricCurrent: return "전류"
+        case .electricPotentialDifference: return "전위 차이"
+        case .electricResistance: return "전기 저항"
+        case .energy: return "에너지"
+        case .frequency: return "주파수"
+        case .fuelEfficiency: return "연료 효율"
+        case .informationStorage: return "정보 저장"
+        case .length: return "길이"
+        case .mass: return "질량"
+        case .power: return "전력"
+        case .pressure: return "압력"
+        case .speed: return "속도"
+        case .temperature: return "온도"
+        case .volume: return "부피"
+        }
+    }
+    
+    // 생략...
+    
+    @frozen enum Volume: CaseIterable {
+        case megaliters, kiloliters, liters, deciliters, centiliters, milliliters, cubicKilometers, cubicMeters, cubicDecimeters, cubicCentimeters, cubicMillimeters, cubicInches, cubicFeet, cubicYards, cubicMiles, acreFeet, bushels, teaspoons, tablespoons, fluidOunces, cups, pints, quarts, gallons, imperialTeaspoons, imperialTablespoons, imperialFluidOunces, imperialPints, imperialQuarts, imperialGallons, metricCups
+        
+        var unit: UnitVolume {
+            switch self {
+            case .megaliters: return .megaliters
+            case .kiloliters: return .kiloliters
+            case .liters: return .liters
+            case .deciliters: return .deciliters
+            case .centiliters: return .centiliters
+            case .milliliters: return .milliliters
+            case .cubicKilometers: return .cubicKilometers
+            case .cubicMeters: return .cubicMeters
+            case .cubicDecimeters: return .cubicDecimeters
+            case .cubicCentimeters: return .cubicCentimeters
+            case .cubicMillimeters: return .cubicMillimeters
+            case .cubicInches: return .cubicInches
+            case .cubicFeet: return .cubicFeet
+            case .cubicYards: return .cubicYards
+            case .cubicMiles: return .cubicMiles
+            case .acreFeet: return .acreFeet
+            case .bushels: return .bushels
+            case .teaspoons: return .teaspoons
+            case .tablespoons: return .tablespoons
+            case .fluidOunces: return .fluidOunces
+            case .cups: return .cups
+            case .pints: return .pints
+            case .quarts: return .quarts
+            case .gallons: return .gallons
+            case .imperialTeaspoons: return .imperialTeaspoons
+            case .imperialTablespoons: return .imperialTablespoons
+            case .imperialFluidOunces: return .imperialFluidOunces
+            case .imperialPints: return .imperialPints
+            case .imperialQuarts: return .imperialQuarts
+            case .imperialGallons: return .imperialGallons
+            case .metricCups: return .metricCups
+            }
+        }
+    }
+}
+```
+
+    * UnitType
+    1. 각 케이스는 곧 Dimension의 하위 클래스 유닛이 내포하고 있는 모든 측정 단위의 배열.
+    2. 배열로 전달되기 때문에 ForEach문을 통해 뷰에 그려주기 편하도록 함.
+> UnitLength, UnitMass 등 Dimension과 Measurement 클래스에 대해 공부하고 어떻게 활용할 수 있을까 다양한 시도를 했다.
+> 이때 어려웠던 점은, 사용자가 변환을 원하는 단위를 선택하여야 하는데 뷰 모델에서 입력된 Dimension을 인식하고, 그 Dimension의 유닛을 식별해서, 선택가능한 측정 단위를 모두 보여주고 고르게 하는 과정을 구현하기 였다.
+
+* MeasurementViewModel
+
+```Swift
+class MeasurementViewModel: ObservableObject {
+    @Published var selectedUnitType: UnitType = .area
+    @Published var selectableUnitList: [Dimension] = []
+    @Published var baseUnit: Dimension?
+    @Published var baseUnitAmount: Double = 0
+    @Published var comparisonUnit: Dimension?
+    @Published var comparisonUnitAmount: Double = 0
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    // 생략...
+    
+    init() {
+        addSubscription()
+    }
+    
+    private func addSubscription() {
+        $selectedUnitType
+            .sink { [weak self] receiveUnitType in
+                self?.selectableUnitList = receiveUnitType.unitList
+                self?.baseUnit = receiveUnitType.unitList.first
+                self?.comparisonUnit = receiveUnitType.unitList.first
+            }
+            .store(in: &cancellables)
+        
+        $baseUnitAmount
+            .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] receiveAmount in
+                guard let self = self, let baseUnit = baseUnit, let comparisonUnit = comparisonUnit else { return }
+                self.comparisonUnitAmount = convertUnit(receiveAmount, baseUnit, comparisonUnit)
+            }
+            .store(in: &cancellables)
+    }
+    
+    // 생략...
+}
+
+// MARK: Internal Methods
+extension MeasurementViewModel {
+    // 생략...
+}
+
+// MARK: Private Methods
+extension MeasurementViewModel {
+    private func convertUnit(_ amount: Double, _ baseUnit: Dimension, _ comparisonUnit: Dimension) -> Double {
+        let baseMeasurement = Measurement(value: amount, unit: baseUnit)
+        return baseMeasurement.converted(to: comparisonUnit).value
+    }
+    
+    // 생략...
+}
+
+```
 
