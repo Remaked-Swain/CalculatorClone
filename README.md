@@ -6,17 +6,23 @@
 
 <p>
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_CoreView.PNG?raw=true" alt="CoreView" width="250px">
-    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MenuView.PNG?raw=true" alt="MenuView" width="250px">
+    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_Menu.PNG?raw=true" alt="Menu" width="250px">
     <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_ExchangeRateView.PNG?raw=true" alt="ExchangeRateView" width="250px">
+    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_ExchangeRateView_CurrencyMenu.PNG?raw=true" alt="CurrencyMenu" width="250px">
+</p>
+
+<p>
+    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView.PNG?raw=true" alt="MeasurementView" width="250px">
+    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView_2.PNG?raw=true" alt="MeasurementView2" width="250px">
+    <img src="https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_MeasurementView_DimensionMenu.PNG?raw=true" alt="DimensionMenu" width="250px">
 </p>
 
     * 아이폰 기본 앱 중 하나인 계산기 앱을 따라 만들어 봄.
-    * 또한 이 계산기에 새로운 기능을 넣어보고 싶어졌고, 이에 다양한 통화에 대한 환율 계산을 수행하는 기능을 넣기로 하였음.
+    * 또한 이 계산기에 새로운 기능을 넣어보고 싶어졌고, 이에 다양한 통화에 대한 환율 계산을 수행하는 기능과 측정 단위를 변환해주는 기능을 넣기로 하였음.
 
 ---------------------------------------
 
 ## ExchangeRate API
-
 ExchangeRate API를 활용하여 최근 환율 정보를 얻을 수 있다.
 
 ![ExchangeRateAPI](https://github.com/Remaked-Swain/ScreenShotRepository/blob/main/CalcClone/CalcClone_ExchangeRateAPI.png?raw=true)
@@ -49,8 +55,11 @@ struct ExchangeRateModel: Codable {
     }
 }
 ```
-> baseCode가 1의 리터럴 값을 가진 기준 통화이고, conversionRates 딕셔너리에 국가코드를 키 값으로 찾을 수 있는 기준 통화 대비 비교 통화의 환율 데이터가 담겨있다.
-> 그래서 나는 키 값으로 사용할 국가코드를 열거형으로 묶어서 관리할 필요를 느끼게 되었다. 겸사겸사 각 국 통화이름도 정리해주자.
+
+    * ExchangeRateModel
+    1. baseCode는 기준 통화를 의미하며 1의 리터럴 값을 가짐.
+    2. conversionRates 딕셔너리는 국가코드를 키 값으로 찾을 수 있는 기준 통화 대비 비교 통화의 환율 데이터를 가짐.
+> 국가코드를 사용해 환율 데이터를 가져올 수 있으므로 이를 열거형으로 묶어서 관리할 필요를 느끼게 되었다. 겸사겸사 각 국 통화이름도 정리해주자.
 
 ```Swift
 @frozen enum CurrencyCode: String, CaseIterable, CustomStringConvertible {
@@ -86,8 +95,16 @@ struct ExchangeRateModel: Codable {
 }
 ```
 
-## ExchangeRateModule & LocalFileManager
+    * CurrencyCode
+    1. JSON 응답에 존재하는 모든 국가코드에 대한 열거.
+    2. RawValue -> String 의 키 값을 사용할 수 있도록 함.
+    3. 모든 케이스에 대해 뷰에서 선택할 수 있도록 CaseIterable 채택함.
+    4. 국가코드를 헷갈려 할 여지가 보이기에 description 프로퍼티를 정의함.
+> 모든 국가코드에 대해서 국가명과 화폐명을 알아내 정리하는 것은 ChatGPT의 도움을 받았다.
 
+---------------------------------------
+
+## ExchangeRateModule & LocalFileManager
 API 와의 통신과 수신된 JSON 응답을 처리하여 ViewModel이 적절한 동작을 수행할 수 있게 보조하는 모듈
 
 * ExchangeRateModule
@@ -234,7 +251,7 @@ class LocalFileManager {
 > 또한 나는 이 과정에서 JSON파일을 기기 내에 저장해둔다면 다운로드가 필요없을 때나 인터넷 연결이 불가능한 경우에도 앱을 사용할 수 있을 것으로 보았다.
 > JSON파일을 로컬파일에서 가져오고, 비교하고, 다운로드를 새로 해야할지 결정하는 분기들이 머릿속에서는 간단했는데 코드로 작성하려니 뭔가 헷갈리기 시작했다. 그래서 도처에 print문을 깔아두고 동작 순서를 여러번 테스트해가며 코드를 작성했다.
 
-* 기능
-    1. 일반 계산기는 정수, 소수에 대한 사칙연산을 수행할 수 있다.
-    2. 환율 계산기는 필요에 따라 인터넷에서 최신 환율 정보를 받아오고, 그것을 기반으로 다양한 국가의 통화와 환율 계산을 지원한다.
-    3. 환율 계산을 원하는 통화를 선택할 수 있다. (앱 부팅 시 대한민국 원화 -> 미국 달러화가 기본값이다.)
+---------------------------------------
+
+## MeasurementViewModel & UnitType
+
