@@ -358,6 +358,7 @@ Dimension과 그 서브클래스인 각종 유닛들에 대하여 관리하기 �
     2. 배열로 전달되기 때문에 ForEach문을 통해 뷰에 그려주기 편하도록 함.
 > UnitLength, UnitMass 등 Dimension과 Measurement 클래스에 대해 공부하고 어떻게 활용할 수 있을까 다양한 시도를 했다.
 > 이때 어려웠던 점은, 사용자가 변환을 원하는 단위를 선택하여야 하는데 뷰 모델에서 입력된 Dimension을 인식하고, 그 Dimension의 유닛을 식별해서, 선택가능한 측정 단위를 모두 보여주고 고르게 하는 과정을 구현하기 였다.
+> 아마 지금처럼 UnitType 열거형으로 정리하는 것보다 더 목적이 분명하고 효율적인 방법이 있을 테지만 현재로서는 내가 원하는대로 동작시키기 위해 이렇게 작성하는 것이 최선인 것 같다.
 
 * MeasurementViewModel
 
@@ -417,3 +418,14 @@ extension MeasurementViewModel {
 
 ```
 
+    * MeasurementViewModel
+    1. 사용자의 UI 조작에 따라 적절한 비즈니스 로직을 처리하고 뷰 자체의 코드는 최대한 UI 관련 요소만 담을 수 있도록 뷰 모델을 만들었음.
+    2. UnitType을 보면 큰 단위의 Dimension 종류가 존재하고, 그 종류에 다양한 작은 측정 단위들이 존재하는 걸 알 수 있음.
+    3. @Published var selectedUnitType은 큰 단위인 Dimension이 무엇으로 선택되어있는지 나타내기 위한 프로퍼티.
+    4. Dimension이 결정되면 selectableUnitList는 그 Dimension의 서브클래스에서 다룰 수 있는 측정 단위들의 배열로 세팅됨.
+    5. 사용자는 selectableUnitList 내에 있는 측정 단위 중에서 하나씩 선택하며 단위 간 변환을 할 수 있음.
+    6. 역시 ExchangeRateViewModel에서 했던 것과 마찬가지로, 숫자를 입력하면 그 변화를 감지하여 convertUnit 메서드가 호출, 변환값을 얻을 수 있게 됨.
+> MeasurementView 에서는 ExchangeRateView에서 사용했던 키패드 버튼들을 똑같이 사용해도 되는지라 KeypadButtonView의 코드를 재사용하길 원했으나, 뷰 모델을 환경객체로 삽입하는 과정을 독립시키지 못했다.
+> 그래서 두 뷰 모델은 겹치는 코드가 굉장히 많아져버렸다.
+> 측정 단위를 변환하는 기능을 추가하는 과정에서 Combine프레임워크를 많이 연습해볼 수 있었으며, 재사용 가능성이 있는 컴포넌트에 대한 설계가 얼마나 중요한지 깨달을 수 있었다.
+> 또한 Foundation에 담겨있던 Dimension, Measurement에 대해 새롭게 배우고, 그것을 커스텀한 열거형으로 바꿀 때 어떤 한계가 있으며 어떻게 해야 돌파할 수 있는지 다양한 방식의 코드를 작성해볼 수 있었다.
